@@ -1,7 +1,7 @@
-import Lesson07RenderingLists from "./components/Lesson07RenderingLists";
+import Lesson08Forms from "./components/Lesson08Forms";
 
 function App() {
-  return <Lesson07RenderingLists />;
+  return <Lesson08Forms />;
 }
 
 export default App;
