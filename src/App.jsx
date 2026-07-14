@@ -1,7 +1,7 @@
-import Lesson05Events from "./components/Lesson05Events";
+import Lesson06ConditionalRendering from "./components/Lesson06ConditionalRendering";
 
 function App() {
-  return <Lesson05Events />;
+  return <Lesson06ConditionalRendering />;
 }
 
 export default App;
