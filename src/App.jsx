@@ -1,7 +1,7 @@
-import Lesson04State from "./components/Lesson04State";
+import Lesson05Events from "./components/Lesson05Events";
 
 function App() {
-  return <Lesson04State />;
+  return <Lesson05Events />;
 }
 
 export default App;
