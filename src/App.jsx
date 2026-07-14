@@ -1,7 +1,7 @@
-import Lesson06ConditionalRendering from "./components/Lesson06ConditionalRendering";
+import Lesson07RenderingLists from "./components/Lesson07RenderingLists";
 
 function App() {
-  return <Lesson06ConditionalRendering />;
+  return <Lesson07RenderingLists />;
 }
 
 export default App;
