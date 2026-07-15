@@ -1,7 +1,7 @@
-import Lesson09UseEffect from "./components/Lesson09UseEffect";
+import Lesson10FetchAPI from "./components/Lesson10FetchAPI";
 
 function App() {
-  return <Lesson09UseEffect />;
+  return <Lesson10FetchAPI />;
 }
 
 export default App;
