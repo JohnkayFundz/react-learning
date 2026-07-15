@@ -1,7 +1,7 @@
-import Lesson11UseRef from "./components/Lesson11UseRef";
+import Lesson12CustomHooks from "./components/Lesson12CustomHooks";
 
 function App() {
-  return <Lesson11UseRef />;
+  return <Lesson12CustomHooks />;
 }
 
 export default App;
