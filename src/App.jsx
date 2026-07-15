@@ -1,7 +1,7 @@
-import Lesson10FetchAPI from "./components/Lesson10FetchAPI";
+import Lesson11UseRef from "./components/Lesson11UseRef";
 
 function App() {
-  return <Lesson10FetchAPI />;
+  return <Lesson11UseRef />;
 }
 
 export default App;
