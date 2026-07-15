@@ -1,7 +1,7 @@
-import Lesson08Forms from "./components/Lesson08Forms";
+import Lesson09UseEffect from "./components/Lesson09UseEffect";
 
 function App() {
-  return <Lesson08Forms />;
+  return <Lesson09UseEffect />;
 }
 
 export default App;
