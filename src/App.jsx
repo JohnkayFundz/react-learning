@@ -1,7 +1,7 @@
-import Lesson16UseMemo from "./components/Lesson16UseMemo";
+import Lesson17UseCallback from "./components/Lesson17UseCallback";
 
 function App() {
-  return <Lesson16UseMemo />;
+  return <Lesson17UseCallback />;
 }
 
 export default App;
