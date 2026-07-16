@@ -1,12 +1,16 @@
 import { useState } from "react";
 
-function TaskForm({ onAddTask }) {
+function TaskForm({ dispatch }) {
   const [task, setTask] = useState("");
 
   const handleSubmit = () => {
     if (task.trim() === "") return;
 
-    onAddTask(task);
+    dispatch({
+      type: "ADD_TASK",
+      payload: task,
+    });
+
     setTask("");
   };
 
