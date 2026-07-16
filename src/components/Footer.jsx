@@ -1,14 +1,7 @@
-import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
-
 function Footer() {
-  const { darkMode } = useContext(ThemeContext);
-
   return (
-    <footer>
-      <p>
-        Current Theme: {darkMode ? "Dark" : "Light"}
-      </p>
+    <footer className="footer">
+      <p>Built with ❤️ using React Context API</p>
     </footer>
   );
 }

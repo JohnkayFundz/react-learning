@@ -2,15 +2,15 @@ import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 
 function Navbar() {
-  const { darkMode, toggleTheme } = useContext(ThemeContext);
+  const { darkMode } = useContext(ThemeContext);
 
   return (
-    <nav>
-      <h2>React Context API</h2>
+    <nav className="navbar">
+      <h2>⚛️ React Context API</h2>
 
-      <button onClick={toggleTheme}>
-        {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-      </button>
+      <span>
+        {darkMode ? "🌙 Dark Mode" : "☀️ Light Mode"}
+      </span>
     </nav>
   );
 }
