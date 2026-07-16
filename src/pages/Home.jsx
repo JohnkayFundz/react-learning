@@ -1,34 +1,78 @@
-import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import { useState, useMemo, useCallback } from "react";
+import { products } from "../data/products";
+import ProductCard from "../components/ProductCard";
+import ProductFilter from "../components/ProductFilter";
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import ThemeButton from "../components/ThemeButton";
+export default function Home() {
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("All");
 
-function Home() {
-  const { darkMode } = useContext(ThemeContext);
+  // Memoized filtering
+  const filteredProducts = useMemo(() => {
+    console.log("Filtering products...");
+
+    return products.filter((product) => {
+      const matchesSearch = product.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
+      const matchesCategory =
+        category === "All" || product.category === category;
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [search, category]);
+
+  // Memoized total value
+  const totalValue = useMemo(() => {
+    return filteredProducts.reduce((sum, product) => sum + product.price, 0);
+  }, [filteredProducts]);
+
+  // Memoized reset button
+  const resetFilters = useCallback(() => {
+    setSearch("");
+    setCategory("All");
+  }, []);
 
   return (
-    <div className={darkMode ? "app dark" : "app light"}>
-      <Navbar />
+    <div className="container">
+      <h1>🛍️ Product Search Dashboard</h1>
 
-      <main className="content">
-        <h1>🏠 Home</h1>
+      <ProductFilter
+        search={search}
+        setSearch={setSearch}
+        category={category}
+        setCategory={setCategory}
+      />
 
-        <p>Welcome to React Context API!</p>
+      <button className="reset-btn" onClick={resetFilters}>
+        Reset Filters
+      </button>
 
-        <h2>
-          Current Theme:
-          {" "}
-          {darkMode ? "🌙 Dark" : "☀️ Light"}
-        </h2>
+      <div className="stats">
+        <div className="stat-card">
+          <h2>{filteredProducts.length}</h2>
+          <p>Products Found</p>
+        </div>
 
-        <ThemeButton />
-      </main>
+        <div className="stat-card">
+          <h2>${totalValue}</h2>
+          <p>Total Value</p>
+        </div>
+      </div>
 
-      <Footer />
+      <div className="products-grid">
+        {filteredProducts.length === 0 ? (
+          <p>No products found.</p>
+        ) : (
+          filteredProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 }
-
-export default Home;
