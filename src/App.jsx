@@ -1,7 +1,7 @@
-import Lesson17UseCallback from "./components/Lesson17UseCallback";
+import Lesson18Performance from "./components/Lesson18Performance";
 
 function App() {
-  return <Lesson17UseCallback />;
+  return <Lesson18Performance />;
 }
 
 export default App;
