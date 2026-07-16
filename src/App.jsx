@@ -1,7 +1,7 @@
-import Lesson18Performance from "./components/Lesson18Performance";
+import Home from "./pages/Home";
 
 function App() {
-  return <Lesson18Performance />;
+  return <Home />;
 }
 
 export default App;
