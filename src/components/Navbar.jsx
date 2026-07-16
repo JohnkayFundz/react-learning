@@ -5,7 +5,7 @@ function Navbar() {
   const { darkMode, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <nav style={{ padding: "20px" }}>
+    <nav>
       <h2>React Context API</h2>
 
       <button onClick={toggleTheme}>
