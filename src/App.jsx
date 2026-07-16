@@ -1,7 +1,7 @@
-import Lesson12CustomHooks from "./components/Lesson12CustomHooks";
+import Lesson13ContextAPI from "./components/Lesson13ContextAPI";
 
 function App() {
-  return <Lesson12CustomHooks />;
+  return <Lesson13ContextAPI />;
 }
 
 export default App;
