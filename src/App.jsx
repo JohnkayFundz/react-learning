@@ -1,7 +1,7 @@
-import Lesson13ContextAPI from "./components/Lesson13ContextAPI";
+import Lesson14UseReducer from "./components/Lesson14UseReducer";
 
 function App() {
-  return <Lesson13ContextAPI />;
+  return <Lesson14UseReducer />;
 }
 
 export default App;
