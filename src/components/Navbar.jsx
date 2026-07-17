@@ -1,16 +1,7 @@
-import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
-
 function Navbar() {
-  const { darkMode } = useContext(ThemeContext);
-
   return (
     <nav className="navbar">
-      <h2>⚛️ React Context API</h2>
-
-      <span>
-        {darkMode ? "🌙 Dark Mode" : "☀️ Light Mode"}
-      </span>
+      <h1>🛒 React Shopping Cart</h1>
     </nav>
   );
 }

@@ -1,21 +1,22 @@
-import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import Navbar from "../components/Navbar";
+import ProductList from "../components/ProductList";
+import Cart from "../components/Cart";
 
 function Home() {
-  const { darkMode } = useContext(ThemeContext);
-
   return (
-    <div
-      style={{
-        background: darkMode ? "#222" : "#fff",
-        color: darkMode ? "#fff" : "#000",
-        minHeight: "100vh",
-        padding: "40px",
-      }}
-    >
-      <h1>Welcome!</h1>
-      <p>This page changes theme using Context API.</p>
-    </div>
+    <>
+      <Navbar />
+
+      <div style={{ display: "flex", gap: "30px", padding: "20px" }}>
+        <div style={{ flex: 2 }}>
+          <ProductList />
+        </div>
+
+        <div style={{ flex: 1 }}>
+          <Cart />
+        </div>
+      </div>
+    </>
   );
 }
 

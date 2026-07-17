@@ -1,17 +1,21 @@
-import { memo } from "react";
+import ProductCard from "./ProductCard";
+import { products } from "../data/products";
 
-const ProductList = memo(({ products }) => {
-  console.log("ProductList Rendered");
-
+function ProductList() {
   return (
-    <ul>
-      {products.map((product) => (
-        <li key={product.id}>
-          {product.name} - ${product.price}
-        </li>
-      ))}
-    </ul>
+    <section>
+      <h2>Products</h2>
+
+      <div className="products-grid">
+        {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+          />
+        ))}
+      </div>
+    </section>
   );
-});
+}
 
 export default ProductList;

@@ -1,9 +1,22 @@
+import { useCart } from "../context/CartContext";
+
 function ProductCard({ product }) {
+  const { dispatch } = useCart();
+
+  const handleAddToCart = () => {
+    console.log("Adding to cart:", product);
+
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: product,
+    });
+  };
+
   return (
     <div className="product-card">
-      <span className="category">
+      <div className="category">
         📦 {product.category}
-      </span>
+      </div>
 
       <h3>{product.name}</h3>
 
@@ -11,7 +24,9 @@ function ProductCard({ product }) {
         ${product.price.toLocaleString()}
       </div>
 
-      <button>View Details</button>
+      <button onClick={handleAddToCart}>
+        Add to Cart
+      </button>
     </div>
   );
 }
