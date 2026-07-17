@@ -1,38 +1,32 @@
-import { useState, useMemo, useCallback } from "react";
-import { products } from "../data/products";
+import { useState } from "react";
 import ProductCard from "../components/ProductCard";
 import ProductFilter from "../components/ProductFilter";
+import { products } from "../data/products";
 
-export default function Home() {
+function Home() {
   const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
+  const [category, setCategory] = useState("");
 
-  // Memoized filtering
-  const filteredProducts = useMemo(() => {
-    console.log("Filtering products...");
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
 
-    return products.filter((product) => {
-      const matchesSearch = product.name
-        .toLowerCase()
-        .includes(search.toLowerCase());
+    const matchesCategory =
+      category === "" || product.category === category;
 
-      const matchesCategory =
-        category === "All" || product.category === category;
+    return matchesSearch && matchesCategory;
+  });
 
-      return matchesSearch && matchesCategory;
-    });
-  }, [search, category]);
+  const totalValue = filteredProducts.reduce(
+    (total, product) => total + product.price,
+    0
+  );
 
-  // Memoized total value
-  const totalValue = useMemo(() => {
-    return filteredProducts.reduce((sum, product) => sum + product.price, 0);
-  }, [filteredProducts]);
-
-  // Memoized reset button
-  const resetFilters = useCallback(() => {
+  const handleReset = () => {
     setSearch("");
-    setCategory("All");
-  }, []);
+    setCategory("");
+  };
 
   return (
     <div className="container">
@@ -43,11 +37,8 @@ export default function Home() {
         setSearch={setSearch}
         category={category}
         setCategory={setCategory}
+        onReset={handleReset}
       />
-
-      <button className="reset-btn" onClick={resetFilters}>
-        Reset Filters
-      </button>
 
       <div className="stats">
         <div className="stat-card">
@@ -56,23 +47,28 @@ export default function Home() {
         </div>
 
         <div className="stat-card">
-          <h2>${totalValue}</h2>
+          <h2>${totalValue.toLocaleString()}</h2>
           <p>Total Value</p>
         </div>
       </div>
 
-      <div className="products-grid">
-        {filteredProducts.length === 0 ? (
-          <p>No products found.</p>
-        ) : (
-          filteredProducts.map((product) => (
+      {filteredProducts.length === 0 ? (
+        <div className="no-products">
+          <h2>No products found</h2>
+          <p>Try changing your search or category filter.</p>
+        </div>
+      ) : (
+        <div className="products-grid">
+          {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
             />
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
+
+export default Home;

@@ -1,13 +1,17 @@
 function ProductCard({ product }) {
   return (
     <div className="product-card">
-      <div className="product-category">
+      <span className="category">
         📦 {product.category}
-      </div>
+      </span>
 
       <h3>{product.name}</h3>
 
-      <h2>${product.price}</h2>
+      <div className="price">
+        ${product.price.toLocaleString()}
+      </div>
+
+      <button>View Details</button>
     </div>
   );
 }
